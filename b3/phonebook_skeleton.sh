@@ -17,11 +17,11 @@ elif [ "$1" = "list" ]; then
     fi
 
 elif [ "$1" = "remove" ]; then
-    sed -i "$2" $PHONEBOOK_ENTRIES
+    sed -i "/^$2/d" $PHONEBOOK_ENTRIES
 
 elif [ "$1" = "clear" ]; then
     cp /dev/null $PHONEBOOK_ENTRIES
 
 else
-     grep "$1"
+     sed -n "/^$1/p" $PHONEBOOK_ENTRIES
 fi
